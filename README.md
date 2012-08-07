@@ -1,4 +1,4 @@
-# OmniAuth Opinionage
+# OmniAuth strategy for Opinionage
 
 Opinionage OAuth2 Strategy (it requires OmniAuth > 1.0)
 
