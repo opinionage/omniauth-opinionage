@@ -22,7 +22,8 @@ Here's a quick example, adding the middleware to a Rails app in `config/initiali
 ```ruby
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :facebook, ENV['OPINIONAGE_KEY'], ENV['OPINIONAGE_SECRET']
-end```
+end
+```
 
 ## Configuring
 
