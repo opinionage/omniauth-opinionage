@@ -8,6 +8,7 @@ Gem::Specification.new do |s|
   s.authors  = ['Carlo Alberto Degli Atti']
   s.email    = ['lordkada@opinionage.com']
   s.summary  = 'Opinionage strategy for OmniAuth'
+  s.description = "This library allows to plug in the Opinionage's strategy for OmniAuth"
   s.homepage = 'https://github.com/opinionage/omniauth-opinionage'
 
   s.files         = `git ls-files`.split("\n")
