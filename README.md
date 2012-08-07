@@ -6,9 +6,10 @@ Opinionage OAuth2 Strategy (it requires OmniAuth > 1.0)
 
 Add to your `Gemfile`:
 
-'''ruby
+```
+ruby
 gem 'omniauth-opinionage'
-'''
+```
 
 Then `bundle install`.
 
