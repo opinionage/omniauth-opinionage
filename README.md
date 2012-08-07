@@ -19,16 +19,16 @@ Then `bundle install`.
 
 Here's a quick example, adding the middleware to a Rails app in `config/initializers/omniauth.rb`:
 
-'''ruby
+```ruby
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :facebook, ENV['OPINIONAGE_KEY'], ENV['OPINIONAGE_SECRET']
-end'''
+end```
 
 ## Configuring
 
 You can configure the authorization scope, which is a comma-separated list of permissions you want to request from the user.
 
-See the Opinionage docs for a full list of available permissions: http://developer.opinionage.com/oauth/scopes/. Default: `USER_BASIC_INFO`
+See the Opinionage docs for a full list of available permissions: http://developer.opinionage.com/oauth/scopes/
 
 ## License
 Copyright (c) 2012 by Opinionage Inc.
