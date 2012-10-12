@@ -6,20 +6,26 @@ module OmniAuth
 
     class Opinionage < OmniAuth::Strategies::OAuth2
 
-      OAUTH_BASE_URL    = "https://www.opinionage.com"
-      SERVICES_BASE_URL = "https://opinionage.com/api"
+      def initialize(*args)
+        super
 
-      option :client_options, { :site          => OAUTH_BASE_URL,
-                                :authorize_url => "/auth/authorize",
-                                :token_url     => "/auth/token",
-                                :url           => "https://opinionage.com", :ssl => { :verify => false } }
+        @OAUTH_BASE_URL    = ENV['OAUTH_BASE_URL'] || "https://www.opinionage.com"
+        @SERVICES_BASE_URL = ENV['SERVICES_BASE_URL'] || "https://opinionage.com/api"
 
-      option :mode, :query
-      option :param_name, 'access_token'
+        puts "OmniAuth::Opinionage OAUTH_BASE_URL=#{@OAUTH_BASE_URL} - SERVICES_BASE_URL=#{@SERVICES_BASE_URL}"
+        @options[:client_options] = { :site          => @OAUTH_BASE_URL,
+                                      :authorize_url => "/auth/authorize",
+                                      :token_url     => "/auth/token",
+                                      :url           => @OAUTH_BASE_URL, :ssl => { :verify => false } }
 
-      option :token_params, {
-          :parse => :json
-      }
+        @options[:mode]       = :query
+        @options[:param_name] = 'access_token'
+
+        @options[:token_params] = {
+            :parse => :json
+        }
+
+      end
 
       uid { raw_info['user']['graph_id'] }
 
@@ -35,7 +41,7 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= access_token.get(SERVICES_BASE_URL + "/1/users/me").parsed || { }
+        @raw_info ||= access_token.get(@SERVICES_BASE_URL + "/1/users/me").parsed || { }
       end
 
       def build_access_token
